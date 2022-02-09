@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+FILE=~/bin/National_Pokedex.csv
+
+usage() { 
+	echo "$0 <command> [<args>]"
+	echo "Commands"
+	echo "	list	List the types of all different pokemons"
+	echo "	num	Counts the number of the type"
+
+}
+list(){
+        cat $FILE | cut -d , -f 4 | sort | uniq -c
+}
+
+num(){
+
+        cat $FILE | cut -d , -f 4 | grep "$1"| uniq -c
+}
+
+if [[ $# -eq 0 ]] ; then
+	usage
+	exit 1
+fi
+
+"$@"

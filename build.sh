@@ -25,10 +25,9 @@ buildClass(){
 }
 
 run(){
-	buildClass
-	echo "Compiling...."
-	java -cp bin Counttypes "$1"
-
+	echo "building and compiling..."
+	buildClass && java -cp bin Counttypes "$@"
+        
 }
 
 "$@"

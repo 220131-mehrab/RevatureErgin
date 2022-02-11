@@ -16,7 +16,19 @@ uninstall(){
 test(){
 	echo "Testing...."
 	./counttypes num Dragon > testDragon.actual
-	cmp testDragon.actual testDragon.expected || echo " Test failed"
+	cmp testDragon.actual testDragon.expected || echo " Test failed "
+}
+
+buildClass(){
+	echo "Creating the Counttypes Class in bin folder"
+	javac -d bin src/Counttypes.java
+}
+
+run(){
+	buildClass
+	echo "Compiling...."
+	java -cp bin Counttypes "$1"
+
 }
 
 "$@"
